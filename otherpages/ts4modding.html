@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>愛の妖精ぱらんてぃんの極まりないズサン運営救世おまんこ</title>
+</head>
+<body>
+    <center>
+        <h1>The sims4のmod開発環境の話</h1>
+        日本語での情報が極めて少ないので. 逐次追記予定. 
+    </center>
+    <ul>
+        <li>modの開発環境構築で少々手間取ったのでメモを残す. </li>
+        <li>必要なもの
+            <ul>
+                <li>Python 3.7.0(必ず3.7.0を用意すること. これを最新版の3.14.0でやろうとしてたのでどうやってもコンパイルが通らず3時間以上悩む羽目になった...)</li>
+                <li>何らかのエディタ. VScodeでもPyCharmでもVimでも. </li>
+                <li><a href="https://sims4studio.com/thread/15145/started-python-scripting">こちらのサイト</a>で配布されている開発環境構築セット</li>
+                <li>(書くまでもないが)The sims4本体(以下ts4と略記)</li>
+            </ul>
+        </li>
+        <li>まず上記を全て用意したら開発セットを展開する. </li>
+        <li>おそらくこのままだと動かない. まず展開したセットのsettings.pyを開き, "game_folder = ..."の行を書き換える. どのように書き換えるかはts4のインストールされているディレクトリに依存. 
+            例として私の環境では<br>
+            C:\Program Files (x86)\Steam\steamapps\common\The Sims 4<br>
+            にインストールされているが, この場合は<br>
+            game_folder = os.path.join('C:', os.sep, 'Program Files (x86)', 'Steam', 'steamapps', 'common','The Sims 4')<br>
+            とする. この変更を行ったうえでdecompile_all.pyを実行. ゲームのスクリプトがデコンパイルされて出てくる. 
+        </li>
+        <li>実行時に変数が未定義などといわれて実行できない場合はPythonのバージョンが間違っている可能性がある. 必ず3.7.0を用意すること. 
+            また「ファイルが見つからない」的なエラーはts4のディレクトリ指定が間違っている可能性がある. </li>
+        <li>デコンパイル中, 一部のファイルでFailedといわれることがあるがこれは正常動作. あまり気にしない. </li>
+        <li>ひとまずこの状態で一度テストコードのmodをコンパイルする. コンパイルはcompile.pyを実行することで自動的にやってくれるが, 
+            おそらくこれも「モジュールが見つからない」みたいなエラーで詰まる. </li>
+        <li>セット内にあるUtilitiesというディレクトリとsettings.pyというファイルをcompile.pyと同じディレクトリにコピーすると解決する. </li>
+        <li>おそらくts4scriptみたいな拡張子のファイルが生成する. このファイルの実態はpycファイルをまとめたzipファイルである. ts4のModsフォルダーに置くことで動作する. 
+            なおゲーム本体の設定画面で「スクリプトmodを許可する」の項目にチェックを入れる必要がある. </li>
+        <li>あと, コンパイルしたのに空のファイルしか生成されないというケースがある. 私が試した限りだと, VSCodeの実行ボタンからcompile.pyを動かすとこういう現象が起こるようである. シェルを起動して正式にpython.exeに引数としてcompile.pyを渡すと治る. 
+            なぜこのような現象が起こるかは不明. 少なくともフォーラムにはこの現象の報告はないので俺環？</li>
+        <li>minecraft forgeのようなわかりやすいAPIみたいなものは存在しないが, Pythonに自信があるならいろいろやってみるのも面白いだろう. </li>
+    </ul>
+
+    <center>
+    <a href="ts4.html">もどる</a>
+    </center>
+
+    
+</body>
+</html>
