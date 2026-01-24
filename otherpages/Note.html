@@ -14,7 +14,6 @@
     <h2>目次</h2>
     <a href="#20251113_1">eigenで特異値分解をする話 (2025/11/13)</a><br>
     <a href="#20251104_1">逆行列を近似で求める話 (2025/11/14)</a><br>
-    <a href="#20260109_1">Linux(Debian,Ubuntu)の環境作るときに入れる作業・ライブラリ等(2025/01/09)</a><br>
     <a href="#20260111_1">acpicaのメモ(2026/01/11)</a><br>
     <a href="#20260123_1">計算化学徒のための数学物理(2026/01/23)</a><br>
     </center>
@@ -68,35 +67,6 @@
                 元の行列の非対角成分の絶対値が対角成分に比べて十分に小さい(無視できるレベル)ということである. また仮に条件が成り立っていても, 
                 いわばまさにテイラー展開の初項のみを取り出しているので, あまり非対角成分が大きい行列だと精度が急激に悪化することが推測される. </li>
         </ul>
-        <li><a id="20260109_1">Linux(Debian,Ubuntu)の環境作るときに入れる作業・ライブラリ等(2025/01/09)</a></li>
-        <ul>
-            <li>環境を作り直したりするときにいっつも依存関係やらなにやらで怒られるのでここにメモとしてまとめておく. ビルドするときは上から順番. </li>
-            <li>suでルート権限取得してsudoresに自分を追加. </li>
-            <li>GCC:Cコンパイラ. 最重要. aptではbuild-essentialで入れる. </li>
-            <li>Python3,venv:Pythonと仮想環境. </li>
-            <li>vim</li>
-            <li>Git</li>
-            <li>ssh関連:鍵作ってGitHubに登録. </li>
-            <li>VSCode:<a href="https://code.visualstudio.com/docs/setup/linux">ここ</a>を参照してレポジトリ登録. aptで入れる. C++,Python拡張を入れておく. </li>
-            <li>baobab:ディスク使用量をグラフィカルに見えるようにするやつ. </li>
-            <li>mullvad:VPNサービス. 契約してたら入れる. <a href="https://mullvad.net/ja/download/vpn/linux">ここ</a>を参照してレポジトリ登録. aptで入れる. </li>
-            <li>Automake,Autoconf:ビルドでよく使う. 入ってなかったら入れる. aptでいい. </li>
-            <li><a href="https://gmplib.org/">GMP</a>,<a href="https://www.mpfr.org/">mpfr</a>:浮動小数点演算のライブラリ. GCCで一緒に入るかも. </li>
-            <li><a href="https://www.sourceware.org/gdb/">gdb</a>, <a href="https://ftp.gnu.org/gnu/binutils/">binutils</a>:デバッガ</li>
-            <li>Qt5-dev:Qtを使っているデスクトップ環境で入れる. 入れないとGUIのソフトがビルド通らなかったり. </li>
-            <li>Cmake:ビルド補助</li>
-            <li><a href="https://github.com/ninja-build/ninja">ninja</a>,<a href="https://github.com/mesonbuild/meson">meson</a>:ビルド自動化. </li>
-            <li><a href="https://libeigen.gitlab.io/">eigen</a>:C++線形代数ライブラリ. </li>
-            <li><a href="http://www.gnuplot.info/">gnuplot</a>:グラフ表示ソフト. Qt環境でビルドした場合, 先述のQtライブラリを入れてないとグラフが表示できない(ビルド時に警告される). </li>
-            <li><a href="https://github.com/netwide-assembler/nasm">nasm</a>:アセンブラ. 低レイヤーで遊ぶなら必須. Edk2のコンパイルにも必要. </li>
-            <li><a href="https://www.gnu.org/software/bison/">bison</a>,<a href="https://github.com/westes/flex">flex</a>:構文解析で遊ぶときに使う. </li>
-            <li><a href="https://github.com/acpica/acpica">acpica</a>:ファームウェア関連の低レイヤーいじりに使うらしい. bisonとflexに依存. </li>
-            <li><a href="https://download.qemu.org/">qemu</a>:OSとか自作しちゃったときに動かす仮想環境. ビルドはaspicaのビルド時に生成されるバイナリに依存. </li>
-            <li><a href="https://www.gnupg.org/download/index.html">GnuPG</a>:ハッシュ値検証とかに使う. ビルドして使うときはまず下に掲載されているLibgpg-error～nPthをビルドする必要があるので注意. </li>
-            <li><a href="https://sqlite.org/">SQLite</a>SQLコマンドつかうときのやつ. </li>
-            <li><a href="https://apt.llvm.org/">LLVM</a>:LLVMに浮気する場合必要. 置いてあるシェルスクリプトを実行してレポジトリ登録からインストールまでやってもらうのが確実. </li>
-            <li><a href="https://www.haskell.org/ghcup/">ghcup</a>:CUI上でHaskellの環境構築をやってくれる. GHCは容量を食うので注意. </li>
-        </ul>
         <li><a id="20260111_1">acpicaのメモ(2026/01/11)</a></li>
         <ul>
             <li>acpicaのビルドで詰まったので書き残し. </li>
@@ -145,7 +115,7 @@
             <li>また実解析に手を出してモンテカルロシミュレーションとかで遊ぶ道もあります. まずルベーグ積分と関数解析. 私は昔『新版 ルベーグ積分と関数解析』(朝倉書店)を読みました. ここにきてようやく無限次元のベクトルが扱えます. </li>
             <li>確率論にも手を出します. 『例と演習で学ぶ 確率論』(講談社)などを読んで演習するとなんとなく公理的確率論の実感が湧いてきます. </li>
             <li>すると実解析が絡むようなモンテカルロ法や機械学習の本が読めるようになってきます. 良かったですね. </li>
-            <li>ただこんなオプショナルな話題まで足を延ばすくらいなら, 『分子動力学法と原子間ポテンシャル』(森北出版)や『第一原理計算の基礎と応用 ―計算物質科学への誘い―』(共立出版)とか読んだほうが1919119419倍ためになると思います. </li>
+            <li>ただこんなオプショナルな話題まで足を延ばすくらいなら, 『分子動力学法と原子間ポテンシャル』(森北出版)や『第一原理計算の基礎と応用 ―計算物質科学への誘い―』(共立出版)とか読んだほうが191919419倍ためになると思います. </li>
         </ul>
     </ul>
     
